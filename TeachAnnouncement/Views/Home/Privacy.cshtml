@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Privacy";
+}
+<h2>@ViewBag.Title.</h2>
+<h2>Chart ID: @ViewBag.chartid</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th style="text-align:center;"></th>
+			<th>CHIPID</th>
+			<th>SEQ_ID</th>
+			@*<th>公告狀態</th>*@
+			<th>UpdateTime</th>
+			<th>SPEC</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr v-for="(item, index) in grid.datas">
+			<th style="text-align:center;"></th>
+			<td>{{item.AnnoSubject}}</td>
+			<td>{{item.AnnoContent}}</td>
+			@*<td>{{item.AnnoStatusName}}</td>*@
+			<td>{{item.AnnoDate}}</td>
+			<td>Warning Line</td>
+		</tr>
+	</tbody>
+</table>

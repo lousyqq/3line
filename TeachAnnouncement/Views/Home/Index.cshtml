@@ -1,0 +1,473 @@
+﻿<div id="app" >
+	<div id="QueryPanel" class="card">
+		<div class="card-header">
+			
+		</div>
+		<div class="card-body">
+			<div class="row align-items-center">
+				<div class="col-auto">
+					<input class="form-check-input" type="radio" id="site" name="site" value="P14" v-model="queryForm.site" checked>
+					<label class="form-check-label" for="site">P14</label>
+				</div>
+				<div class="col-auto">
+					<input class="form-check-input" type="radio" id="site" name="site" value="P58" v-model="queryForm.site" >
+					<label class="form-check-label" for="site">P58</label>
+				</div>
+				<div class="col-auto">
+					<label for="queryFormAnnoSubject" class="col-form-label">ChartID</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="queryFormAnnoSubject" name="chartid" class="form-control" v-model="queryForm.AnnoSubject">
+				</div>
+				<div class="col-auto">
+					<label for="queryFormStartDate" class="col-form-label">查詢日期</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="queryFormStartDate" class="form-control" v-model="queryForm.StartDate">
+				</div>			
+				<div class="col-auto">
+					<label for="queryFormEndDate" class="col-form-label">結束日期</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="queryFormEndDate" class="form-control" v-model="queryForm.EndDate">
+				</div>
+			</div>
+			<div class="row align-items-center">
+				<div class="col-auto">
+					<input class="form-check-input" type="checkbox" id="spec1" value="Warning Line" v-model="queryForm.specs" checked>
+					<label class="form-check-label" for="spec1">Warning Line</label>
+				</div>
+				<div class="col-auto">
+					<input class="form-check-input" type="checkbox" id="spec2" value="Temp Spec" v-model="queryForm.specs" checked>
+					<label class="form-check-label" for="spec2">Temp Spec</label>
+				</div>
+				<div class="col-auto"> 
+					<input class="form-check-input" type="checkbox" id="spec3" value="Gard Band"  v-model="queryForm.specs" checked>
+					<label class="form-check-label" for="spec3">Gard Band</label>
+				</div>
+			</div>
+		</div>
+		<div class="card-header">
+			<button type="button" class="btn btn-primary" v-on:click="Query()">查詢</button> &nbsp;
+		</div>
+		<div class="card-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="text-align:center;"></th>
+						<th>CHIPID</th>
+						<th>SEQ_ID</th>
+						@*<th>公告狀態</th>*@
+						<th>UpdateTime</th>
+						<th>SPEC</th>
+						<th>詳細資訊</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in grid.datas">
+						<th style="text-align:center;"></th>
+						<td>{{item.AnnoSubject}}</td>
+						<td>{{item.AnnoContent}}</td>
+						@*<td>{{item.AnnoStatusName}}</td>*@
+						<td>{{item.AnnoDate}}</td>
+						<td>{{item.SPEC_USE}}</td>
+						<td><a v-on:click="EditMode(index)" style="cursor: pointer;">chick me</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<vue-pagination v-bind:pagination="grid.pagination" v-on:requery="reQuery"></vue-pagination>
+		</div>
+	</div>
+
+	<div id="EditPanel" class="card" style="display:none;">
+		<div class="card-header">
+			詳細資訊
+			<div style="float:right;">
+				<button type="button" class="btn btn-secondary btn-sm" v-on:click="BackPage()">回前頁</button>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="editFormAnnoDate" class="col-form-label">UpdateTime</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="editFormAnnoDate" class="form-control" v-model="editForm.AnnoDate" disabled>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="editFormAnnoSubject" class="col-form-label">CHIPID</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="editFormAnnoSubject" class="form-control" v-model="editForm.AnnoSubject" disabled>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="editFormAnnoContent" class="col-form-label">SEQ_ID</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="editFormAnnoContent" class="form-control" v-model="editForm.AnnoContent" disabled>
+				</div>
+			</div>
+			@*
+			<div class="row">
+				<div class="col-auto">
+					<label for="editFormAnnoStatus" class="col-form-label">公告狀態</label>
+				</div>
+				
+				<div class="col-auto">
+					<select class="form-select" id="editFormAnnoStatus" v-model="editForm.AnnoStatus">
+						<option value="1">顯示</option>
+						<option value="0">隱藏</option>
+					</select>
+				</div>
+            </div>
+			*@
+			<div class="row">
+				 <div class="col-sm-2">
+					<label for="editFormAnnoContent" class="col-form-label">new_target</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="editFormAnnoContent" class="form-control" v-model="editForm.new_target" disabled>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="editFormAnnoContent" class="col-form-label">new_OL</label>
+				</div>
+				<div class="col-auto">
+					<input type="text" id="editFormAnnoContent" class="form-control" v-model="editForm.new_OL" disabled>
+				</div>
+			</div>
+		</div>
+		@*
+		 <div class="card-footer">
+		 	<button type="button" class="btn btn-primary" v-on:click="EditSave()">儲存</button>
+		 </div>
+		*@
+	</div>
+</div>
+@section scripts {
+	<script>
+		const app = Vue.createApp({
+			data() {
+			
+				return {
+					queryForm: {
+						site:'P14'
+						,AnnoSubject: ''
+						, AnnoStatus: '1'
+						, StartDate:''
+						, EndDate:''
+						, specs1: ''
+						, specs2: ''
+						, specs3: ''
+						, specs: ['Warning Line', 'Temp Spec', 'Gard Band']
+					}
+					, addForm: {
+						AnnoDate: ''
+						, AnnoSubject: ''
+						, AnnoContent: ''
+						, AnnoStatus: '1'
+					}
+					, editForm: {
+						Pkey: ''
+						, AnnoDate: ''
+						, AnnoSubject: ''
+						, AnnoContent: ''
+						, AnnoStatus: '1'
+						, new_target:''
+						, new_OL:''
+						, OL_FLAG:''
+						, WL_FLAG:''
+					}
+					, grid: {
+						datas: []
+						, pagination: {
+							pages: [], pageNo: '1', pageSize: '10', totalCount: ''
+						}
+						, headerCheck: false
+					} 
+				}
+			}
+			, methods: {
+				Query(reQuery) {
+					var self = this;
+
+					if (reQuery !== 'reQuery') {
+						self.grid.pagination.pageNo = 1;
+					}
+
+					// 組合表單資料
+					var postData = {};
+
+					postData['site'] = self.queryForm.site;
+					postData['AnnoSubject'] = self.queryForm.AnnoSubject;
+					postData['AnnoStatus'] = self.queryForm.AnnoStatus;
+					postData['StartDate'] = self.queryForm.StartDate;
+					postData['EndDate'] = self.queryForm.EndDate;
+					postData['specs1'] = self.queryForm.specs1;
+					postData['specs2'] = self.queryForm.specs2;
+					postData['specs3'] = self.queryForm.specs3;
+					postData['specs'] = self.queryForm.specs;
+
+					// 附加分頁
+					postData['pagination'] = JSON.parse(JSON.stringify(self.grid.pagination));
+
+					$.blockUI();
+					// 使用 jQuery Ajax 傳送至後端
+					$.ajax({
+						url: '@Url.Content("~/AdmAnno/Query")',
+						method: 'POST',
+						dataType: 'json',
+						data: { inModel: postData },
+						success: function (datas) {
+							$.unblockUI();
+							if (datas.ErrMsg) {
+								alert(datas.ErrMsg);
+								return;
+							}
+							// 綁定列表
+							self.grid.datas = datas.Grid;
+							self.grid.pagination = datas.pagination;
+
+							// 附加勾選給刪除使用
+							for (var i in self.grid.datas) {
+								self.grid.datas[i]['selCheck'] = false;
+							}
+						},
+						error: function (err) {
+							$.unblockUI();
+							alert(err.status + " " + err.statusText + '\n' + err.responseText);
+						}
+					});
+
+				}
+				// 執行重查
+				, reQuery(emitData) {
+					var self = this;
+					if (emitData !== undefined) {
+						self.grid.pagination = emitData.pagination;
+					}
+					self.Query('reQuery');
+				}
+				// 回前頁
+				, BackPage() {
+					$('#QueryPanel').show();
+					$('#AddPanel').hide();
+					$('#EditPanel').hide();
+				}
+				// 新增儲存
+				, AddSave() {
+					var self = this;
+					// 組合表單資料
+					var postData = {};
+					postData['AnnoDate'] = self.addForm.AnnoDate;
+					postData['AnnoSubject'] = self.addForm.AnnoSubject;
+					postData['AnnoContent'] = self.addForm.AnnoContent;
+					postData['AnnoStatus'] = self.addForm.AnnoStatus;
+
+					$.blockUI();
+					// 使用 jQuery Ajax 傳送至後端
+					$.ajax({
+						url: '@Url.Content("~/AdmAnno/AddSave")',
+						method: 'POST',
+						dataType: 'json',
+						data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
+						success: function (datas) {
+							$.unblockUI();
+							if (datas.ErrMsg) {
+								alert(datas.ErrMsg);
+								return;
+							}
+
+							alert(datas.ResultMsg);
+							self.BackPage();
+							self.Query();
+						},
+						error: function (err) {
+							$.unblockUI();
+							alert(err.status + " " + err.statusText + '\n' + err.responseText);
+						}
+					});
+				}
+				// 新增視窗
+				, OpenAddPanel() {
+					var self = this;
+
+					$('#QueryPanel').hide();
+					$('#AddPanel').show();
+
+					self.addForm.AnnoDate = '';
+					self.addForm.AnnoSubject = '';
+					self.addForm.AnnoContent = '';
+					self.addForm.AnnoStatus = '1';
+				}
+				// 修改儲存
+				, EditSave() {
+					var self = this;
+					// 組合表單資料
+					var postData = {};
+					postData['Pkey'] = self.editForm.Pkey;
+					postData['AnnoDate'] = self.editForm.AnnoDate;
+					postData['AnnoSubject'] = self.editForm.AnnoSubject;
+					postData['AnnoContent'] = self.editForm.AnnoContent;
+					postData['AnnoStatus'] = self.editForm.AnnoStatus;
+
+					$.blockUI();
+					// 使用 jQuery Ajax 傳送至後端
+					$.ajax({
+						url: '@Url.Content("~/AdmAnno/EditSave")',
+						method: 'POST',
+						dataType: 'json',
+						data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
+						success: function (datas) {
+							$.unblockUI();
+							if (datas.ErrMsg) {
+								alert(datas.ErrMsg);
+								return;
+							}
+
+							alert(datas.ResultMsg);
+							self.BackPage();
+							self.Query();
+						},
+						error: function (err) {
+							$.unblockUI();
+							alert(err.status + " " + err.statusText + '\n' + err.responseText);
+						}
+					});
+				}
+				// 修改模式
+				, EditMode(index) {
+					var self = this;
+
+					// 顯示資料
+					self.editForm.Pkey = self.grid.datas[index].Pkey;
+					self.editForm.AnnoDate = self.grid.datas[index].AnnoDate;
+					$('#editFormAnnoDate').datepicker("update", self.grid.datas[index].AnnoDate);
+					self.editForm.AnnoSubject = self.grid.datas[index].AnnoSubject;
+					self.editForm.AnnoContent = self.grid.datas[index].AnnoContent;
+					self.editForm.AnnoStatus = self.grid.datas[index].AnnoStatus;
+					self.editForm.new_target = self.grid.datas[index].new_target;
+					
+					self.editForm.new_OL = self.grid.datas[index].new_OL;
+					self.editForm.WL_FLAG = self.grid.datas[index].WL_FLAG;
+					self.editForm.OL_FLAG = self.grid.datas[index].OL_FLAG;
+					$('#QueryPanel').hide();
+					$('#EditPanel').show();
+				}
+				// 全選/全不選
+				, HeaderCheck() {
+					var self = this;
+					for (var i in self.grid.datas) {
+						// 狀態必須是可勾選
+						if (!self.grid.datas[i].selCheck.disabled && !self.grid.datas[i].selCheck.display) {
+							self.grid.datas[i].selCheck = self.grid.headerCheck;
+						}
+					}
+				}
+				// 勾選刪除
+				, DelCheck() {
+					var self = this;
+					var cnt = 0;
+					for (var i in self.grid.datas) {
+						if (self.grid.datas[i].selCheck == true) {
+							cnt += 1;
+						}
+					}
+					if (cnt == 0) {
+						alert('請勾選資料');
+					} else {
+						if (confirm("是否確定刪除所勾選的 " + cnt + " 筆資料？")) {
+							let checks = [];
+							for (var i in self.grid.datas) {
+								if (self.grid.datas[i].selCheck) {
+									checks.push(self.grid.datas[i]);
+								}
+							}
+
+							var postData = {};
+							postData['checks'] = checks;
+
+							$.blockUI();
+							// 使用 jQuery Ajax 傳送至後端
+							$.ajax({
+								url: '@Url.Content("~/AdmAnno/DelCheck")',
+								method: 'POST',
+								dataType: 'json',
+								data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
+								success: function (datas) {
+									$.unblockUI();
+									if (datas.ErrMsg) {
+										alert(datas.ErrMsg);
+										return;
+									}
+
+									alert(datas.ResultMsg);
+									self.Query();
+								},
+								error: function (err) {
+									$.unblockUI();
+									alert(err.status + " " + err.statusText + '\n' + err.responseText);
+								}
+							});
+						}
+					}
+				}
+			}
+		});
+		app.component('vue-pagination', VuePagination);
+		const vm = app.mount('#app');
+
+		$(function () {
+			//Date picker
+			$('#queryFormStartDate').datepicker({
+				autoclose: true
+				, format: "yyyy/mm/dd"
+			});
+			$("#queryFormStartDate").datepicker().on("blur", function (e) {
+				vm.$data.queryForm.StartDate = $(this).val();
+			});
+			$("#queryFormStartDate").datepicker().on("change", function (e) {
+				vm.$data.queryForm.StartDate = $(this).val();
+			});
+
+			$('#queryFormEndDate').datepicker({
+				autoclose: true
+				, format: "yyyy/mm/dd"
+			});
+			$("#queryFormEndDate").datepicker().on("blur", function (e) {
+				vm.$data.queryForm.EndDate = $(this).val();
+			});
+			$("#queryFormEndDate").datepicker().on("change", function (e) {
+				vm.$data.queryForm.EndDate = $(this).val();
+			});
+
+
+			$('#addFormAnnoDate').datepicker({
+				autoclose: true
+				, format: "yyyy/mm/dd"
+			});
+			$("#addFormAnnoDate").datepicker().on("blur", function (e) {
+				vm.$data.addForm.AnnoDate = $(this).val();
+			});
+			$("#addFormAnnoDate").datepicker().on("change", function (e) {
+				vm.$data.addForm.AnnoDate = $(this).val();
+			});
+
+			$('#editFormAnnoDate').datepicker({
+				autoclose: true
+				, format: "yyyy/mm/dd"
+			});
+			$("#editFormAnnoDate").datepicker().on("blur", function (e) {
+				vm.$data.editForm.AnnoDate = $(this).val();
+			});
+			$("#editFormAnnoDate").datepicker().on("change", function (e) {
+				vm.$data.editForm.AnnoDate = $(this).val();
+			});
+		});
+	</script>
+}

@@ -32,6 +32,7 @@
 					<input type="text" id="queryFormEndDate" class="form-control" v-model="queryForm.EndDate">
 				</div>
 			</div>
+			&nbsp;
 			<div class="row align-items-center">
 				<div class="col-auto">
 					<input class="form-check-input" type="checkbox" id="spec1" value="Warning Line" v-model="queryForm.specs" checked>
@@ -45,8 +46,24 @@
 					<input class="form-check-input" type="checkbox" id="spec3" value="Gard Band"  v-model="queryForm.specs" checked>
 					<label class="form-check-label" for="spec3">Gard Band</label>
 				</div>
+				<div class="col-auto">
+					<input class="form-check-input" type="checkbox" id="spec4" value="Group Spec" v-model="queryForm.specs" disabled>
+					<label class="form-check-label" for="spec4">Group Spec</label>
+				</div>
+				<div class="col-auto">
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo7DaysAgo" >7天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo14DaysAgo">14天</button>&nbsp;		
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo21DaysAgo">21天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo30DaysAgo">30天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo60DaysAgo">60天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo180DaysAgo">180天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo210DaysAgo">210天</button>&nbsp;
+					<button class="btn btn-sm btn-purple" type="button" v-on:click="setStartDateTo360DaysAgo">360天</button>&nbsp;
+				</div>
 			</div>
+
 		</div>
+
 		<div class="card-header">
 			<button type="button" class="btn btn-primary" v-on:click="Query()">查詢</button> &nbsp;
 		</div>
@@ -153,14 +170,27 @@
 	<script>
 		const app = Vue.createApp({
 			data() {
-			
+
+				// 格式化日期為 "yyyy/mm/dd" 格式的函數
+				function formatDate(date) {
+					const year = date.getFullYear();
+					const month = ('0' + (date.getMonth() + 1)).slice(-2);
+					const day = ('0' + date.getDate()).slice(-2);
+					return year + '/' + month + '/' + day;
+				}
+
+				// 計算今天日期和三個月前的日期
+				const today = new Date();
+				const startDate = new Date();
+				startDate.setMonth(today.getMonth() - 3); // 設置為三個月前
+
 				return {
 					queryForm: {
 						site:'P14'
-						,AnnoSubject: ''
+						, AnnoSubject: ''
 						, AnnoStatus: '1'
-						, StartDate:''
-						, EndDate:''
+						, StartDate: formatDate(startDate)
+						, EndDate: formatDate(today)
 						, specs1: ''
 						, specs2: ''
 						, specs3: ''
@@ -193,6 +223,82 @@
 				}
 			}
 			, methods: {
+
+				setStartDateTo7DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 7); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+
+				setStartDateTo14DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 14); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+
+				setStartDateTo21DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 21); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+
+				setStartDateTo30DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 30); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+				setStartDateTo60DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 60); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+				setStartDateTo180DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 180); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+				setStartDateTo360DaysAgo() {
+					const today = new Date();
+					const sevenDaysAgo = new Date(today);
+					sevenDaysAgo.setDate(today.getDate() - 360); // 計算7天前的日期
+					this.queryForm.StartDate = this.formatDate(sevenDaysAgo); // 更新 Vue 的 StartDate
+
+					// 同步更新到日期選擇器顯示
+					$('#queryFormStartDate').datepicker('setDate', this.queryForm.StartDate);
+				},
+
+
+				// 格式化日期的工具函數
+				formatDate(date) {
+					const year = date.getFullYear();
+					const month = ('0' + (date.getMonth() + 1)).slice(-2);
+					const day = ('0' + date.getDate()).slice(-2);
+					return year + '/' + month + '/' + day;
+				},
 				Query(reQuery) {
 					var self = this;
 
@@ -423,6 +529,9 @@
 		const vm = app.mount('#app');
 
 		$(function () {
+			
+		
+
 			//Date picker
 			$('#queryFormStartDate').datepicker({
 				autoclose: true
@@ -471,3 +580,15 @@
 		});
 	</script>
 }
+<style>
+	.btn-purple {
+		background-color: #6610f2;
+		color: white;
+		border-color: #6610f2;
+	}
+	.btn-purple:hover {
+			background-color: #6610f2;
+			color: white;
+			border-color: #6610f2;
+	}
+</style>

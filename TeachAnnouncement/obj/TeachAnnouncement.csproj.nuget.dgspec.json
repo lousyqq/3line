@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\test\\TeachAnnouncement\\TeachAnnouncement.csproj": {}
+    "C:\\3Line\\TeachAnnouncement\\TeachAnnouncement.csproj": {}
   },
   "projects": {
-    "C:\\test\\TeachAnnouncement\\TeachAnnouncement.csproj": {
+    "C:\\3Line\\TeachAnnouncement\\TeachAnnouncement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\test\\TeachAnnouncement\\TeachAnnouncement.csproj",
+        "projectUniqueName": "C:\\3Line\\TeachAnnouncement\\TeachAnnouncement.csproj",
         "projectName": "TeachAnnouncement",
-        "projectPath": "C:\\test\\TeachAnnouncement\\TeachAnnouncement.csproj",
+        "projectPath": "C:\\3Line\\TeachAnnouncement\\TeachAnnouncement.csproj",
         "packagesPath": "C:\\Users\\yu-tinglin\\.nuget\\packages\\",
-        "outputPath": "C:\\test\\TeachAnnouncement\\obj\\",
+        "outputPath": "C:\\3Line\\TeachAnnouncement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yu-tinglin\\AppData\\Roaming\\NuGet\\NuGet.Config",

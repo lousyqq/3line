@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JKRmcgT560w=",
+  "dgSpecHash": "gze+E/TiPcw=",
   "success": true,
-  "projectFilePath": "C:\\test\\TeachAnnouncement\\TeachAnnouncement.csproj",
+  "projectFilePath": "C:\\3Line\\TeachAnnouncement\\TeachAnnouncement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yu-tinglin\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\yu-tinglin\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

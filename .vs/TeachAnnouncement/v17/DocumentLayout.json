@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\3Line\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\controllers\\admannocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\controllers\\admannocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\models\\admannoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\models\\admannoviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\controllers\\admannocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\controllers\\admannocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|c:\\3line\\teachannouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8387DD49-ECFC-4489-A1BA-9234835DED23}|TeachAnnouncement\\TeachAnnouncement.csproj|solutionrelative:teachannouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +34,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "bootstrap.min.css",
               "DocumentMoniker": "C:\\3Line\\TeachAnnouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
               "RelativeDocumentMoniker": "TeachAnnouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
@@ -42,18 +42,17 @@
               "RelativeToolTip": "TeachAnnouncement\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-03T15:22:20.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-03T15:22:20.016Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\3Line\\TeachAnnouncement\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "TeachAnnouncement\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\3Line\\TeachAnnouncement\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "TeachAnnouncement\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAADcCAAAAAAAAAAAIwD4CAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAAAAAOwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-24T14:55:42.514Z",
               "EditorCaption": ""
@@ -66,20 +65,20 @@
               "RelativeDocumentMoniker": "TeachAnnouncement\\Models\\AdmAnnoViewModel.cs",
               "ToolTip": "C:\\3Line\\TeachAnnouncement\\Models\\AdmAnnoViewModel.cs",
               "RelativeToolTip": "TeachAnnouncement\\Models\\AdmAnnoViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T15:17:07.315Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AdmAnnoController.cs",
               "DocumentMoniker": "C:\\3Line\\TeachAnnouncement\\Controllers\\AdmAnnoController.cs",
               "RelativeDocumentMoniker": "TeachAnnouncement\\Controllers\\AdmAnnoController.cs",
               "ToolTip": "C:\\3Line\\TeachAnnouncement\\Controllers\\AdmAnnoController.cs",
               "RelativeToolTip": "TeachAnnouncement\\Controllers\\AdmAnnoController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAIQAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAjwCcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-24T14:54:52.789Z",
               "EditorCaption": ""

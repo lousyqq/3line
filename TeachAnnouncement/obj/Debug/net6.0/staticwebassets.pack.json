@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\TeachAnnouncement.bundle.scp.css"
     },
     {
+      "Id": "C:\\3Line\\TeachAnnouncement\\wwwroot\\css\\7days.png",
+      "PackagePath": "staticwebassets\\css\\7days.png"
+    },
+    {
+      "Id": "C:\\3Line\\TeachAnnouncement\\wwwroot\\css\\img\\7days.png",
+      "PackagePath": "staticwebassets\\css\\img\\7days.png"
+    },
+    {
       "Id": "C:\\3Line\\TeachAnnouncement\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

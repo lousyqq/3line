@@ -88,7 +88,12 @@
 						@*<td>{{item.AnnoStatusName}}</td>*@
 						<td>{{item.AnnoDate}}</td>
 						<td>{{item.SPEC_USE}}</td>
-						<td><a v-on:click="EditMode(index)" style="cursor: pointer;">chick me</a></td>
+						<td>
+							<a v-on:click="EditMode(index)" style="cursor: pointer;">chick me</a>
+							<a :href="generateUrl(item.AnnoDate)" target="_blank">
+								<img src="/css/7days.png" style="cursor: pointer;">
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -185,6 +190,7 @@
 				startDate.setMonth(today.getMonth() - 3); // 設置為三個月前
 
 				return {
+					yourUrl: 'http://www.google.com.tw',
 					queryForm: {
 						site:'P14'
 						, AnnoSubject: ''
@@ -223,6 +229,11 @@
 				}
 			}
 			, methods: {
+
+				generateUrl(AnnoDate) {
+					// 根據傳入的 AnnoDate 生成動態 URL
+					return `${this.yourUrl}/${AnnoDate}`;
+				},
 
 				setStartDateTo7DaysAgo() {
 					const today = new Date();

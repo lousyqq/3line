@@ -56,3 +56,6 @@ LEFT JOIN (
 ) AS EndData
     ON StartData.RowNum = EndData.RowNum -- 使用 RowNum 對應合併
 ORDER BY StartData.START_SEQ_;
+
+----
+![image](3.png)
